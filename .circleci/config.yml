@@ -2,7 +2,7 @@
 # See: https://circleci.com/docs/2.0/language-java/
 version: '2.1'
 orbs:
-  gradle: circleci/gradle@7.4.1
+  gradle: circleci/gradle@3.0.0
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
