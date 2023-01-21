@@ -13,6 +13,7 @@ targetCompatibility = 17
 
 repositories {
     mavenCentral()
+    allInsecureProtocol = true
 }
 
 dependencies {
