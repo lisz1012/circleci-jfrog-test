@@ -42,7 +42,7 @@ jobs:
       - run:
           name: gradle build
           command: ./gradlew clean jar
-           // /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar
+#           /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar
 
       - save_cache:
           paths:
