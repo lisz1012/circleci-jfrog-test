@@ -61,6 +61,9 @@ jobs:
           name: Install jFrog CLI
           command: curl -fL https://getcli.jfrog.io | sh
       - run:
+          name: jar preparation
+          command: ./gradlew clean jar
+      - run:
           name: Push to Artifactory
           command: |
             ls -al /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar 
