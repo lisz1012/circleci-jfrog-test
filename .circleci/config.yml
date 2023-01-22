@@ -49,6 +49,7 @@ jobs:
       # run tests!
       - run: gradle test
   test:
+    requires: build
     docker:
       # specify the version you desire here
       - image: circleci/openjdk
