@@ -62,10 +62,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "build.gradle" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
       - run:
           name: Install jFrog CLI
           command: curl -fL https://getcli.jfrog.io | sh
