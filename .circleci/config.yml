@@ -54,8 +54,11 @@ jobs:
       - run: gradle test
   upload_to_jfrog:
     docker:
-      # specify the version you desire here
       - image: circleci/openjdk
+    working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
     steps:
       - run:
           name: Install jFrog CLI
