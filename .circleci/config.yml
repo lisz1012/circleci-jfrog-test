@@ -49,6 +49,9 @@ jobs:
       # run tests!
       - run: gradle test
   upload_to_jfrog:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk
     steps:
       - run:
           name: Install jFrog CLI
