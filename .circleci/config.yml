@@ -94,3 +94,6 @@ workflows:
       - test:
           requires:
             - build
+  build_only:
+    jobs:
+      - build
