@@ -39,7 +39,13 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: ./gradlew clean jar
+      - run:
+          name: gradle build
+          command: |
+            ./gradlew clean jar
+            pwd
+            ls -al
+            find / -name *.jar 2>/dev/null
 
       - save_cache:
           paths:
