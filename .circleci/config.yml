@@ -77,7 +77,7 @@ jobs:
           command: |
             ls -al /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar 
             ./jfrog config add artifactory-server --artifactory-url="$ARTIFACTORY_URL" --user="$ARTIFACTORY_USER" --password=$ARTIFACTORY_PASSWORD --interactive=false
-#            echo "Config is successful"
+#            echo "Config is successful!"
 #            ./jfrog rt u /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar tiger-prod --build-name=tiger-prod --build-number=$CIRCLE_BUILD_NUM
 #            echo "u is successful"
 #            ./jfrog rt bce tiger-prod $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
