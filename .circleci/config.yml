@@ -76,10 +76,10 @@ jobs:
           name: Push to Artifactory
           command: |
             ls -al /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar 
-            ./jfrog config add tiger-prod --artifactory-url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_APIKEY --interactive=false
-            echo "Config is successful"
-            ./jfrog rt u /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar tiger-prod --build-name=tiger-prod --build-number=$CIRCLE_BUILD_NUM
-            echo "u is successful" 
+#            ./jfrog config add tiger-prod --artifactory-url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_APIKEY --interactive=false
+#            echo "Config is successful"
+#            ./jfrog rt u /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar tiger-prod --build-name=tiger-prod --build-number=$CIRCLE_BUILD_NUM
+#            echo "u is successful"
 #            ./jfrog rt bce tiger-prod $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
 #            echo "bce is successful"
 #            ./jfrog rt bp tiger-prod $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
