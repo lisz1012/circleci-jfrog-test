@@ -43,6 +43,13 @@ jobs:
           name: gradle build
           command: ./gradlew clean jar
 #           /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar
+      - run:
+          name: log
+          command: |
+            ls -al /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar 
+            echo $ARTIFACTORY_URL
+            echo $ARTIFACTORY_USER
+            echo $ARTIFACTORY_PASSWORD
 
       - save_cache:
           paths:
