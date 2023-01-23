@@ -2,6 +2,6 @@ package com.lisz;
 
 public class CircleciJfrogTestApplication {
     public void m() {
-        System.out.println("dev");
+        System.out.println("hotfix");
     }
 }
