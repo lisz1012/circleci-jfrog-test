@@ -110,7 +110,7 @@ jobs:
           name: Push to Artifactory
           command: |
             ./jfrog config add artifactory-server --artifactory-url="$ARTIFACTORY_URL" --user="$ARTIFACTORY_USER" --password="$ARTIFACTORY_PASSWORD" --interactive=false
-            ls -al /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar
+            ls -al /home/circleci/repo/build/libs
             whoami
             mv /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar "/home/circleci/repo/build/libs/circleci-jfrog-test-1.0-$CIRCLE_BUILD_NUM.jar"
             ./jfrog rt u /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar tiger-dev --build-name=tiger-dev --build-number=$CIRCLE_BUILD_NUM
