@@ -113,6 +113,34 @@ jobs:
             ./jfrog rt bce tiger-dev $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
             ./jfrog rt bp tiger-dev $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
 
+  upload_to_jfrog_hotfix:
+    docker:
+      - image: circleci/openjdk
+    working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run:
+          name: Install jFrog CLI
+          command: curl -fL https://getcli.jfrog.io | sh
+      - run:
+          name: jar preparation
+          command: ./gradlew clean jar
+      - run:
+          name: Push to Artifactory
+          command: |
+            ./jfrog config add artifactory-server --artifactory-url="$ARTIFACTORY_URL" --user="$ARTIFACTORY_USER" --password="$ARTIFACTORY_PASSWORD" --interactive=false
+            ./jfrog rt u /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar tiger-hotfix --build-name=tiger-hotfix --build-number=$CIRCLE_BUILD_NUM
+            ./jfrog rt bce tiger-hotfix $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
+            ./jfrog rt bp tiger-hotfix $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
+
 workflows:
   version: 2
   build_and_test:
@@ -132,6 +160,13 @@ workflows:
             branches:
               only:
                 dev
+      - upload_to_jfrog_hotfix: # 再搞个 upload_to_jfrog_2，上传到别的路径中
+            requires:
+              - build
+            filters:
+              branches:
+                only:
+                  /^hotfix.*/
   build_only:
     jobs:
       - build
