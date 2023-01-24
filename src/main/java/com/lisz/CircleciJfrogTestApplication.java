@@ -6,6 +6,6 @@ public class CircleciJfrogTestApplication {
     }
 
     public static void main(String[] args) {
-        System.out.println("dev!!");
+        System.out.println("This is from dev branch");
     }
 }
