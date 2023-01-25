@@ -81,8 +81,8 @@ jobs:
           name: Push to Artifactory
           command: |
             ./jfrog config add artifactory-server --artifactory-url="$ARTIFACTORY_URL" --user="$ARTIFACTORY_USER" --password="$ARTIFACTORY_PASSWORD" --interactive=false
-            ls -al /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar
-            ./jfrog rt u /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar tiger-prod --build-name=tiger-prod --build-number=$CIRCLE_BUILD_NUM
+            mv /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar "/home/circleci/repo/build/libs/circleci-jfrog-test-1.0-$CIRCLE_BUILD_NUM.jar"
+            ./jfrog rt u /home/circleci/repo/build/libs/circleci-jfrog-test-1.0-$CIRCLE_BUILD_NUM.jar tiger-prod --build-name=tiger-prod --build-number=$CIRCLE_BUILD_NUM
             ./jfrog rt bce tiger-prod $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
             ./jfrog rt bp tiger-prod $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
 
@@ -110,8 +110,6 @@ jobs:
           name: Push to Artifactory
           command: |
             ./jfrog config add artifactory-server --artifactory-url="$ARTIFACTORY_URL" --user="$ARTIFACTORY_USER" --password="$ARTIFACTORY_PASSWORD" --interactive=false
-            ls -al /home/circleci/repo/build/libs
-            whoami
             mv /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar "/home/circleci/repo/build/libs/circleci-jfrog-test-1.0-$CIRCLE_BUILD_NUM.jar"
             ./jfrog rt u "/home/circleci/repo/build/libs/circleci-jfrog-test-1.0-$CIRCLE_BUILD_NUM.jar" tiger-dev --build-name=tiger-dev --build-number=$CIRCLE_BUILD_NUM
             ./jfrog rt bce tiger-dev $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
@@ -141,8 +139,8 @@ jobs:
           name: Push to Artifactory
           command: |
             ./jfrog config add artifactory-server --artifactory-url="$ARTIFACTORY_URL" --user="$ARTIFACTORY_USER" --password="$ARTIFACTORY_PASSWORD" --interactive=false
-            ls -al /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar
-            ./jfrog rt u /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar tiger-hotfix --build-name=tiger-hotfix --build-number=$CIRCLE_BUILD_NUM
+            mv /home/circleci/repo/build/libs/circleci-jfrog-test-1.0.jar "/home/circleci/repo/build/libs/circleci-jfrog-test-1.0-$CIRCLE_BUILD_NUM.jar" 
+            ./jfrog rt u /home/circleci/repo/build/libs/circleci-jfrog-test-1.0-$CIRCLE_BUILD_NUM.jar tiger-hotfix --build-name=tiger-hotfix --build-number=$CIRCLE_BUILD_NUM
             ./jfrog rt bce tiger-hotfix $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
             ./jfrog rt bp tiger-hotfix $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
 
