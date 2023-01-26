@@ -6,6 +6,12 @@ version: '2.1'
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 #workflows:
 #  gerrit-ci-pipeline:
+
+parameters:
+  upload_jar:
+    type: boolean
+    default: false
+
 jobs:
   build:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -147,6 +153,7 @@ jobs:
 workflows:
   version: 2
   build_and_test:
+    when: [ << pipeline.parameters.upload_jar >> ]
     jobs:
       - build
       - upload_to_jfrog_prod:  # 再搞个 upload_to_jfrog_2，上传到别的路径中
