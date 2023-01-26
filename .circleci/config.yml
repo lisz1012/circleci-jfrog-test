@@ -180,5 +180,8 @@ workflows:
                 only:
                   /^hotfix.*/
   build_only:
+    when:
+      and:
+        - equal: [ false, << pipeline.parameters.upload_jar >> ]
     jobs:
       - build
