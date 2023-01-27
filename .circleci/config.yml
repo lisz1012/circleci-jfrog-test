@@ -158,7 +158,7 @@ workflows:
         - equal: [ true, << pipeline.parameters.upload_jar >> ]
     jobs:
       - build
-      - upload_to_jfrog_prod:  # 再搞个 upload_to_jfrog_2，上传到别的路径中
+      - upload_to_jfrog_prod:  # 再搞个 upload_to_jfrog_2，上传到别的路径中。
           requires:
             - build
           filters:
