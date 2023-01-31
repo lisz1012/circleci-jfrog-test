@@ -149,7 +149,7 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - upload_to_jfrog_prod:  # 再搞个 upload_to_jfrog_2，上传到别的路径中
+      - upload_to_jfrog_prod:  # 再搞个 upload_to_jfrog_2，上传到别的路径中.
           requires:
             - build
           filters:
